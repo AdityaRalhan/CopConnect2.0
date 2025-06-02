@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import html2pdf from "html2pdf.js";
 import { Suspense } from 'react'
 
-const DownloadReportForCitizen = () => {
+const DownloadReportForCitizenDetails = () => {
   const searchParams = useSearchParams();
   const data = JSON.parse(searchParams.get("data")); // or pull from localStorage/sessionStorage
 
@@ -126,6 +126,14 @@ const DownloadReportForCitizen = () => {
         <p>© {new Date().getFullYear()} City Police Department</p>
       </div>
     </div>
+    </Suspense>
+  );
+};
+
+const DownloadReportForCitizen = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DownloadReportForCitizenDetails /> {/* Child component with useSearchParams() */}
     </Suspense>
   );
 };

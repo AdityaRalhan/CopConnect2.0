@@ -2,11 +2,9 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
-
-
 import Navbar from "../HelpingComponents/Navbar";
 
-const Login = () => {
+const LoginContent = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
   const role = searchParams.get("role");
@@ -193,4 +191,11 @@ const Login = () => {
   );
 };
 
+const Login = () => {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <LoginContent /> {/* Child component with useSearchParams() */}
+    </Suspense>
+  );
+};
 export default Login;
