@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import html2pdf from "html2pdf.js";
+import { Suspense } from 'react'
 
 const DownloadReportForCitizen = () => {
   const searchParams = useSearchParams();
@@ -127,4 +128,10 @@ const DownloadReportForCitizen = () => {
   );
 };
 
-export default DownloadReportForCitizen;
+export default function DownloadReportForCitizen() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <DownloadReportForCitizen />
+    </Suspense>
+  );
+}
