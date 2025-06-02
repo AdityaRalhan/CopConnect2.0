@@ -21,7 +21,7 @@ const CaseDetailDisplay = () => {
       try {
         const token = sessionStorage.getItem("token");
         const res = await axios.get(
-          `${NEXT_PUBLIC_BACKEND_URL}/api/cases/searchCase`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases/searchCase`,
           {
             params: {
               type: "caseNumber",

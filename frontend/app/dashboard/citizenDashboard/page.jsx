@@ -76,7 +76,7 @@ const CitizenDashboard = () => {
         }
 
         const response = await axios.get(
-          `${NEXT_PUBLIC_BACKEND_URL}/api/cases/search-by-contact?contact=${phone}`
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases/search-by-contact?contact=${phone}`
         );
 
         setRecentAlerts(response.data.cases);

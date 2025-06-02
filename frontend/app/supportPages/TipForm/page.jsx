@@ -59,7 +59,7 @@ const TipForm = () => {
       console.log("📤 Media files count:", mediaFiles.length);
 
       const response = await fetch(
-        `${NEXT_PUBLIC_BACKEND_URL}/api/anonymous/fileAnonymousTip`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/anonymous/fileAnonymousTip`,
         {
           method: "POST",
           headers: {

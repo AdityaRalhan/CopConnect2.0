@@ -45,7 +45,7 @@ const Login = () => {
     setError("");
     setLoading(true);
 
-    const endpoint = isSignup ? `${NEXT_PUBLIC_BACKEND_URL}/api/users/register` : `${NEXT_PUBLIC_BACKEND_URL}/api/users/login`;
+    const endpoint = isSignup ? `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/register` : `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/users/login`;
     const payload = { ...credentials, role };
 
     try {

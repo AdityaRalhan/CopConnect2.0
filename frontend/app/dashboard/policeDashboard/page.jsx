@@ -38,7 +38,7 @@ const PoliceDashboard = () => {
         const token = sessionStorage.getItem("token");
 
         const res = await axios.get(
-          `${NEXT_PUBLIC_BACKEND_URL}/api/cases/getOpenCases`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/cases/getOpenCases`,
           {
             headers: {
               Authorization: `Bearer ${token}`, // or just token, depending on backend expectations
@@ -59,7 +59,7 @@ const PoliceDashboard = () => {
     const token = sessionStorage.getItem("token");
     try {
       const response = await axios.get(
-        `${NEXT_PUBLIC_BACKEND_URL}/api/anonymous/pendingAnonymousTips`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/api/anonymous/pendingAnonymousTips`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // Add token to the request header

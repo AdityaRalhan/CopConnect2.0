@@ -11,8 +11,8 @@ const FaqSection = () => {
     const fetchFAQs = async () => {
       try {
         const [citizenRes, policeRes] = await Promise.all([
-          axios.get(`${NEXT_PUBLIC_BACKEND_URL}/api/faqs/getFaq?section=citizen`),
-          axios.get(`${NEXT_PUBLIC_BACKEND_URL}/api/faqs/getFaq?section=police`)
+          axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/faqs/getFaq?section=citizen`),
+          axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/api/faqs/getFaq?section=police`)
         ]);
         setCitizenFaqs(citizenRes.data);
         setPoliceFaqs(policeRes.data);
