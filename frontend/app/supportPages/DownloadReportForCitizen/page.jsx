@@ -2,16 +2,23 @@
 
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import html2pdf from "html2pdf.js";
 import { Suspense } from 'react'
 
 const DownloadReportForCitizenDetails = () => {
   const searchParams = useSearchParams();
-  const data = JSON.parse(searchParams.get("data")); // or pull from localStorage/sessionStorage
+  const data = JSON.parse(searchParams.get("data"));
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // Define an async function inside useEffect for dynamic import
+    const generatePdf = async () => {
+      // Wait a moment to ensure the DOM is ready
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+
       const element = document.getElementById("report-content");
+      if (!element) return;
+
+      // Dynamically import html2pdf.js only on the client
+      const html2pdf = (await import("html2pdf.js")).default;
 
       html2pdf()
         .from(element)
@@ -22,11 +29,12 @@ const DownloadReportForCitizenDetails = () => {
           jsPDF: { unit: "in", format: "a4", orientation: "portrait" },
         })
         .save();
-    }, 1000);
+    };
 
-    return () => clearTimeout(timer);
+    generatePdf();
+
+    // No cleanup needed for html2pdf, but you could cancel setTimeout if you use one
   }, [data]);
-
   return (
     <Suspense fallback={<div>Loading...</div>}>
     <div
