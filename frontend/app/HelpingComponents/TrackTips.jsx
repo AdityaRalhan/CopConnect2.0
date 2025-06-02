@@ -22,7 +22,7 @@ const TrackTips = () => {
       try {
         
         const response = await axios.get(
-          `http://localhost:5001/api/anonymous/tips/track/${anonymousId}`
+          `${NEXT_PUBLIC_BACKEND_URL}/api/anonymous/tips/track/${anonymousId}`
         );
         setTips(response.data.tips || []);
       } catch (error) {

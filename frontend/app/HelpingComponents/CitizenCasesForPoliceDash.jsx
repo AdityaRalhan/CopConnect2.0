@@ -32,7 +32,7 @@ const CitizenCasesForPoliceDash = () => {
       // Adjust the URL to your API endpoint
       const token = sessionStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5001/api/reports/getReports`,
+        `${NEXT_PUBLIC_BACKEND_URL}/api/reports/getReports`,
         {
           method: "GET", // Or 'POST', depending on your API
           headers: {

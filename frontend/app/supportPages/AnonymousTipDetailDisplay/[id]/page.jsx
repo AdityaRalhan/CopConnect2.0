@@ -32,7 +32,7 @@ const AnonymousTipDetailDisplay = () => {
 
         // Make API request to your endpoint
         const response = await axios.get(
-          `http://localhost:5001/api/anonymous/tips/${id}`
+          `${NEXT_PUBLIC_BACKEND_URL}/api/anonymous/tips/${id}`
         );
 
         // Set tip data from response
@@ -68,7 +68,7 @@ const AnonymousTipDetailDisplay = () => {
     console.log("this is the badgenumber i have decoded : ", badgeNumber);
 
     try {
-      await axios.patch(`http://localhost:5001/api/anonymous/tips/${id}`, {
+      await axios.patch(`${NEXT_PUBLIC_BACKEND_URL}/api/anonymous/tips/${id}`, {
         status: "Reviewed",
         reviewedBy: officerName,
         badgeNumber: badgeNumber,

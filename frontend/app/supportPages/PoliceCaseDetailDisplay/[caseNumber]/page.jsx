@@ -21,7 +21,7 @@ const CaseDetailDisplay = () => {
       try {
         const token = sessionStorage.getItem("token");
         const res = await axios.get(
-          `http://localhost:5001/api/cases/searchCase`,
+          `${NEXT_PUBLIC_BACKEND_URL}/api/cases/searchCase`,
           {
             params: {
               type: "caseNumber",
@@ -81,7 +81,7 @@ const CaseDetailDisplay = () => {
     }
 
     try {
-      const response = await axios.post("http://localhost:5001/api/cases/markAsResolved", {
+      const response = await axios.post(`${NEXT_PUBLIC_BACKEND_URL}/api/cases/markAsResolved`, {
         caseNumber: caseDetails.caseNumber,
       });
 

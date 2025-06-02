@@ -37,7 +37,7 @@ const CitizenDashboard = () => {
         const token = sessionStorage.getItem('token')
         const decoded = jwtDecode(token)
         const phone = decoded.phone
-        const res = await axios.get(`http://localhost:5001/api/reports/getReportStatus/${phone}`);
+        const res = await axios.get(`${NEXT_PUBLIC_BACKEND_URL}/api/reports/getReportStatus/${phone}`);
         
         if (res.data.length > 0) {
           // assuming we care about the most recent complaint
@@ -76,7 +76,7 @@ const CitizenDashboard = () => {
         }
 
         const response = await axios.get(
-          `http://localhost:5001/api/cases/search-by-contact?contact=${phone}`
+          `${NEXT_PUBLIC_BACKEND_URL}/api/cases/search-by-contact?contact=${phone}`
         );
 
         setRecentAlerts(response.data.cases);

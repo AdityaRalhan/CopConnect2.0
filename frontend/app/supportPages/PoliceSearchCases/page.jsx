@@ -31,7 +31,7 @@ const PoliceSearchCases = () => {
       // Replace with your actual API endpoint
       const token = sessionStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5001/api/cases/searchCase?type=${searchType}&query=${searchTerm}`,
+        `${NEXT_PUBLIC_BACKEND_URL}/api/cases/searchCase?type=${searchType}&query=${searchTerm}`,
         {
           headers: {
             Authorization: `Bearer ${token}`,

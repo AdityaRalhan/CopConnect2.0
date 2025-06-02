@@ -45,7 +45,7 @@ const Login = () => {
     setError("");
     setLoading(true);
 
-    const endpoint = isSignup ? "http://localhost:5001/api/users/register" : "http://localhost:5001/api/users/login";
+    const endpoint = isSignup ? `${NEXT_PUBLIC_BACKEND_URL}/api/users/register` : `${NEXT_PUBLIC_BACKEND_URL}/api/users/login`;
     const payload = { ...credentials, role };
 
     try {
@@ -79,6 +79,7 @@ const Login = () => {
   };
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <>
       {/* <Navbar /> */}
       {role !== "anonymous" && (
@@ -188,13 +189,8 @@ const Login = () => {
       )}
       {/* <Footer /> */}
     </>
+    </Suspense>
   );
 };
 
-export default function Login() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <LoginContent />
-    </Suspense>
-  );
-}
+export default Login;

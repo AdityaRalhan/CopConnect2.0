@@ -28,6 +28,7 @@ const DownloadReportForCitizen = () => {
   }, [data]);
 
   return (
+    <Suspense fallback={<div>Loading...</div>}>
     <div
       id="report-content"
       className="p-10 bg-white text-black w-full min-h-screen font-serif space-y-8"
@@ -125,13 +126,8 @@ const DownloadReportForCitizen = () => {
         <p>© {new Date().getFullYear()} City Police Department</p>
       </div>
     </div>
+    </Suspense>
   );
 };
 
-export default function DownloadReportForCitizen() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <DownloadReportForCitizen />
-    </Suspense>
-  );
-}
+export default DownloadReportForCitizen;

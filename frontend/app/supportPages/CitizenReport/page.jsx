@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 import { jwtDecode } from "jwt-decode"; // Correct import
 
-const socket = io("http://localhost:5001"); // Update with backend URL
+const socket = io(`${NEXT_PUBLIC_BACKEND_URL}`); // Update with backend URL
 
 const FileReportPage = () => {
   const [reportData, setReportData] = useState({
@@ -68,7 +68,7 @@ const FileReportPage = () => {
       console.log("this is the report data being sent ", reportData);
 
       const response = await fetch(
-        "http://localhost:5001/api/reports/fileReport",
+        `${NEXT_PUBLIC_BACKEND_URL}/api/reports/fileReport`,
         {
           method: "POST",
           headers: {

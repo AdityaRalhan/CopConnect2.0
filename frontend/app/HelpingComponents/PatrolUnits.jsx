@@ -8,7 +8,7 @@ const PatrolUnits = () => {
   useEffect(() => {
     const fetchPatrolUnits = async () => {
       try {
-        const res = await fetch("http://localhost:5001/api/users/getPolice");
+        const res = await fetch(`${NEXT_PUBLIC_BACKEND_URL}/api/users/getPolice`);
         const data = await res.json();
         console.log("yes we got a response : ", data);
         setPatrolUnits(data);
